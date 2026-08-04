@@ -12,8 +12,8 @@
  <footer>
     <small>Created by</small>
     <a href="https://www.github.com/jamezmca" target="_blank">
-        <img alt="pfp" src="https://avatars.githubusercontent.com/u/77163783?v=4"/>
-        <p>jamezmca</p>
+        <img alt="pfp" src="https://avatars.githubusercontent.com/u/285011656?v=4"/>
+        <p>Sebastián Caro</p>
         <i class="fa-brands fa-github"></i>
     </a>
  </footer>
