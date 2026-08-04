@@ -43,6 +43,7 @@
     @media (min-width: 640px){
         .tip-container{
             gap: 1rem;
+            margin-bottom: 24px;
         }
     }
 </style>

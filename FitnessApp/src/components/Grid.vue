@@ -12,6 +12,7 @@
 
 <template>
     <section id="grid">
+        <!-- Render multiple time a single button using a for loop-->
         <button :disabled="workoutIdx > 0 && workoutIdx > firstIncompleteWorkoutIndex" @click="() => handleSelectWorkout(workoutIdx)" :key="workoutIdx" v-for="(workout, workoutIdx) in Object.keys(workoutProgram)"  class="card-button plan-card">
             <div>
                 <p>Day {{ workoutIdx < 9 ? '0' + (workoutIdx + 1) : workoutIdx + 1 }}</p>

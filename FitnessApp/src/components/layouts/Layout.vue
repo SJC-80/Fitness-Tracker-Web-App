@@ -11,7 +11,7 @@
  </main>
  <footer>
     <small>Created by</small>
-    <a href="https://www.github.com/jamezmca" target="_blank">
+    <a href="https://github.com/SJC-80" target="_blank">
         <img alt="pfp" src="https://avatars.githubusercontent.com/u/285011656?v=4"/>
         <p>Sebastián Caro</p>
         <i class="fa-brands fa-github"></i>
