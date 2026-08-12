@@ -1,10 +1,15 @@
 <script setup>
     import { workoutProgram, exerciseDescriptions } from '../../utils'
     import Portal from '../Portal.vue'
+    import {ref} from 'vue'
     const selectedWorkout = 4
     const { workout, warmup } = workoutProgram[selectedWorkout]
-    let selectedExercise = null
+    let selectedExercise = ref(null)
+    console.log(selectedExercise)
     const exerciseDescription = exerciseDescriptions[selectedExercise]
+    function showRearDeltModal() {
+        selectedExercise.value = 'leaning rear delt holds'
+    }
 </script>
 
 <template>
@@ -39,7 +44,7 @@
             <div class="workout-grid-row" v-for="(w, wIdx) in warmup" key="wIdx">
                 <div class="grid-name">
                     <p>{{ w.name }}</p>
-                    <button>
+                    <button @click="() => {selectedExercise = w.name}">
                         <i class="fa-regular fa-circle-question"></i>
                     </button>
                 </div>
@@ -56,7 +61,7 @@
              <div class="workout-grid-row" v-for="(w, wIdx) in workout" key="wIdx">
                 <div class="grid-name">
                     <p>{{ w.name }}</p>
-                    <button>
+                    <button @click="() => {selectedExercise = w.name}">
                         <i class="fa-regular fa-circle-question"></i>
                     </button>
                 </div>
@@ -73,85 +78,100 @@
 </template>
 
 <style scoped>
-#workout-card,
-.plan-card{
-    display:flex;
-    flex-direction:column;
-}
+ #workout-card,
+    .plan-card {
+        display: flex;
+        flex-direction: column;
+    }
 
-#workout-card {
-    gap: 1.5rem;
-}
+    #workout-card {
+        gap: 1.5rem;
+    }
 
-.plan-card-header,
-.workout-btns {
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap: 1rem;
-}
+    .plan-card-header,
+    .workout-btns {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+    }
 
-.workout-grid,
-.workout-grid-row {
-    display:grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
-    gap: 1rem;
-}
+    .workout-grid,
+    .workout-grid-row {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 1rem;
+    }
 
-.workout-grid-row,
-.workout-grid-line {
-    grid-column: span 7 / span 7;
-}
+    .workout-grid-row,
+    .workout-grid-line {
+        grid-column: span 7 / span 7;
+    }
 
-.grid-name {
-    grid-column: span 3 / span 3;
-}
+    .workout-grid-line {
+        margin: 0.5rem 0;
+        height: 3px;
+        border-radius: 2px;
+        background: var(--background-muted);
+    }
 
-.grid-name button {
-    padding: 0;
-    border: none;
-    box-shadow: none;
-}
+    .grid-name {
+        grid-column: span 3 / span 3;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
 
-.grid-name button:hover{
-    transform: none;
-    box-shadow: none;
-    color: var(--color-link);
-}
+    .grid-name button {
+        padding: 0;
+        border: none;
+        box-shadow: none;
+    }
 
-.workout-grid-row .grid-name button {
-    opacity: 0;
-    pointer-events: none;
-}
+    .grid-name button:hover {
+        transform: none;
+        box-shadow: none;
+        color: var(--color-link);
+    }
 
-.workout-grid-row:hover .grid-name button {
-    opacity: 1;
-    pointer-events: all;
-}
+    .workout-grid-row .grid-name button {
+        opacity: 0;
+        pointer-events: none;
+    }
 
-.grid-name p {
-    transform: capitalize;
-}
+    .workout-grid-row:hover .grid-name button {
+        opacity: 1;
+        pointer-events: all;
+    }
 
-.grid-weights {
-    grid-column: span 2 / span 2;
-}
+    .grid-name p {
+        text-transform: capitalize;
+    }
 
-.workout-btns button {
-    flex: 1;
-}
+    .grid-weights {
+        grid-column: span 2 / span 2;
+    }
 
-.workout-btns button i{
-    padding-left: 0.5rem;
-}
+    .workout-btns button {
+        flex: 1;
+    }
 
-.exercise-description{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
+    .workout-btns button i {
+        padding-left: 0.5rem;
+    }
 
-.exercise-description button i{
-    padding-left: 0.5rem;
-}
+    .exercise-description {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .exercise-description h3 {
+        text-transform: capitalize;
+    }
+
+    .exercise-description button i {
+        padding-left: 0.5rem;
+    }
 </style>
